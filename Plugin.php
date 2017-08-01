@@ -4,9 +4,6 @@ use Backend;
 use System\Models\File;
 use System\Classes\PluginBase;
 
-/**
- * thumbnail Plugin Information File
- */
 class Plugin extends PluginBase
 {
     /**
