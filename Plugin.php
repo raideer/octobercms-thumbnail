@@ -18,9 +18,9 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'thumbnail',
-            'description' => 'No description provided yet...',
+            'description' => 'Make thumbnails with using a twig filter',
             'author'      => 'raideer',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-square'
         ];
     }
 
