@@ -37,10 +37,21 @@ class Plugin extends PluginBase
     public function createThumbnail($path, $width = 'auto', $height = 'auto', $options = [])
     {
         try {
-            // $path = MediaLibrary::url($path);
-            $path = ltrim($path, '/');
-            $image = (new \System\Models\File)->fromFile($path);
+            // Converting local url to a path
+            $baseUrl = url('/');
+            if (substr($path, 0, strlen($baseUrl)) === $baseUrl) {
+                $path = substr($path, strlen($baseUrl));
+                $path = base_path($path);
+            }
+
+            // Check if $path is a URL
+            if (filter_var($path, FILTER_VALIDATE_URL)) {
+                $image = (new File)->fromUrl($path);
+            } else {
+                $image = (new File)->fromFile(ltrim($path, '/'));
+            }
         } catch (\Exception $e) {
+            // If debug is false, all exceptions are supressed
             if (array_key_exists('debug', $options)) {
                 if ($options['debug'] === true) {
                     throw $e;
