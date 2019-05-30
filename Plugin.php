@@ -1,13 +1,9 @@
 <?php namespace Raideer\Thumbnail;
 
 use Backend;
-use Storage;
-use Cms\Classes\MediaLibrary;
+use System\Models\File;
 use System\Classes\PluginBase;
 
-/**
- * thumbnail Plugin Information File
- */
 class Plugin extends PluginBase
 {
     /**
@@ -19,9 +15,9 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'thumbnail',
-            'description' => 'No description provided yet...',
+            'description' => 'Make thumbnails with using a twig filter',
             'author'      => 'raideer',
-            'icon'        => 'icon-leaf'
+            'icon'        => 'icon-square'
         ];
     }
 
