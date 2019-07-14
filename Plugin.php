@@ -37,14 +37,14 @@ class Plugin extends PluginBase
             $baseUrl = url('/');
             if (substr($path, 0, strlen($baseUrl)) === $baseUrl) {
                 $path = substr($path, strlen($baseUrl));
-                $path = base_path($path);
+                $path = base_path(ltrim($path, '/'));
             }
 
             // Check if $path is a URL
             if (filter_var($path, FILTER_VALIDATE_URL)) {
                 $image = (new File)->fromUrl($path);
             } else {
-                $image = (new File)->fromFile(ltrim($path, '/'));
+                $image = (new File)->fromFile($path);
             }
         } catch (\Exception $e) {
             // If debug is false, all exceptions are supressed
